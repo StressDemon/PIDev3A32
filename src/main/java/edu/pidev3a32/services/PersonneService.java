@@ -14,17 +14,15 @@ import java.util.List;
 public class PersonneService implements IService<Personne> {
 
     @Override
-    public void addEntity(Personne personne) {
-        try {
+    public void addEntity(Personne personne) throws SQLException {
+
         String requete = "INSERT INTO personne(nom, prenom) " +
                 "VALUES ('" + personne.getNom() + "','" + personne.getPrenom() + "')";
 
-            Statement st = MyConnection.getInstance().getCnx().createStatement();
+        Statement st = MyConnection.getInstance().getCnx().createStatement();
 
-            st.executeUpdate(requete);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        st.executeUpdate(requete);
+
     }
 
     public void addEntity2(Personne personne){
